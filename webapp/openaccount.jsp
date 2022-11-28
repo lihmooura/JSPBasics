@@ -14,7 +14,7 @@ PreparedStatement ps;
 /* This methods are created by the container */
  public void jspInit() {
 	 try {
-	 DriverManager.getConnection("com.mysql.jdbc.Driver");
+	 Class.forName("com.mysql.jdbc.Driver");
 	 con = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "test");
 	 ps = con.prepareStatement("insert into account value(?, ?, ?, ?)");
 	 }catch(Exception e) {
@@ -49,3 +49,5 @@ ps.setInt(4, bal);
 ps.executeUpdate();
 
 %>
+
+<%@ include file="openaccount.html" %>
